@@ -1,0 +1,48 @@
+import xlrd
+import os
+import shutil
+
+os.chdir('')  #Folder to rename files
+
+book = xlrd.open_workbook('') #Exel with names
+sheet = book.sheet_by_name('')   #Sheet name 
+data = [[sheet.cell_value(r, c) for c in range(sheet.ncols)] for r in range(sheet.nrows)]
+
+    
+
+
+
+print(len(os.listdir(''))) #Folder to rename files
+
+#print(data)
+
+clount = 0      
+counsad = 0
+filenames = []
+
+try:
+        for f in os.listdir(''): #Folder to rename files
+                        file_name, file_ext = os.path.splitext(f)               
+                        #os.rename(f,new_name)
+                        filenames = file_name
+                        
+                        for y in range(0,len(data)):
+                                if(data[y][0] == file_name):
+                                        print("Match!", data[y][0], file_name)
+                                        print(file_name)
+                                        print(str(data[y][1]))
+                                        qwe1 = data[y][0] +"_"+ str(int(data[y][1])) + "_A.pdf"
+                                        
+                                        print('STR:',qwe1)
+                                        shutil.copy(f, ''+ qwe1) #Folder for results
+                                        clount = clount+1
+
+                        if(data[y][0] != file_name) :
+                                print("NOT a Match!", data[y][0], file_name)
+                                       
+                                
+                      
+except:
+        pass
+
+print(clount)
